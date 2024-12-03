@@ -46,8 +46,7 @@ resource "azurerm_kubernetes_cluster" "agones" {
     node_count            = var.node_count
     vm_size               = var.machine_type
     os_disk_size_gb       = var.disk_size
-    enable_auto_scaling   = false
-    enable_node_public_ip = var.enable_node_public_ip
+    node_public_ip_enabled  = var.enable_node_public_ip
   }
 
   service_principal {
@@ -65,7 +64,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "system" {
   vm_size               = var.machine_type
   node_count            = 1
   os_disk_size_gb       = var.disk_size
-  enable_auto_scaling   = false
   node_taints = [
     "agones.dev/agones-system=true:NoExecute"
   ]
@@ -80,7 +78,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "metrics" {
   vm_size               = var.machine_type
   node_count            = 1
   os_disk_size_gb       = var.disk_size
-  enable_auto_scaling   = false
   node_taints = [
     "agones.dev/agones-metrics=true:NoExecute"
   ]
