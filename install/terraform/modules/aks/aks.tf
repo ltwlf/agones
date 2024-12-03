@@ -25,6 +25,7 @@ terraform {
 
 provider "azurerm" {
   features {}
+  subscription_id = "f7fb269d-2f76-49cd-92fc-80ed1cfa996c"
 }
 
 resource "azurerm_resource_group" "agones" {
